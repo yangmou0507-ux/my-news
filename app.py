@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
 
 st.title("🦋 PrettyBusy 官方情报站")
-st.write("不必翻墙，同步感受地狱的魅力！")
+st.write("不必翻墙，搬运自X：@Preetybusy_KR！")
 
 # ====================================================
 # 【第一条：最新消息】 永远把最新的放在最上面
@@ -28,40 +28,6 @@ st.image("https://wx2.sinaimg.cn/mw2000/009c1GDEly1icba74auw2j30ek0d374x.jpg", c
 st.write("""
 这里写第二条的内容：
 试验2
-""")
-
-# ====================================================
-
-st.info("💡 站长提示：本站内容由站长爆肝搬运，感谢支持！")
-
-st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
-
-st.title("🦋 PrettyBusy 官方情报站")
-st.write("不必翻墙，搬运自X：@Preetybusy_KR！")
-
-# ====================================================
-# 【第一条：最新消息】 永远把最新的放在最上面
-# ====================================================
-st.divider() # 第一条上方的分割线
-st.subheader("📅 [4月16日] 贝尔菲格(攻击者) 动态立绘")
-# 记得把下面括号里的链接换成你在 GitHub 上传后的图片地址
-st.image("https://wx2.sinaimg.cn/mw2000/009c1GDEly1icba74auw2j30ek0d374x.jpg", caption="贝尔菲格立绘")
-st.write("""
-这里写第一条的内容：
-试验11
-""")
-
-
-# ====================================================
-# 【第二条：往期消息】 旧消息往下面排
-# ====================================================
-st.divider() # 第二条上方的分割线，用来隔开上面的消息
-st.subheader("📅 [4月16日] 版本更新公告")
-# 记得把下面括号里的链接换成你在 GitHub 上传后的第二张图片地址
-st.image("https://wx2.sinaimg.cn/mw2000/009c1GDEly1icba74auw2j30ek0d374x.jpg", caption="更新详情图")
-st.write("""
-这里写第二条的内容：
-试验22
 """)
 
 # ====================================================
