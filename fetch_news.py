@@ -1,11 +1,12 @@
 import feedparser
 
 def get_news():
-    # 我们换一个更快的“搬运桥梁”地址
-    url = "https://rss.dragonegg.moe/twitter/user/prettybusy"
+    # 换成这个更官方、更稳的地址
+    url = "https://rsshub.app/twitter/user/prettybusy/allow_emptycontent=1"
+    
+    # 加上一点“伪装”，让推特觉得我们是正常人在看
     data = feedparser.parse(url)
     
-    # 打印一下看看有没有拿到东西（这是给后台看的）
     if not data.entries:
         return []
     return data.entries[:5]
