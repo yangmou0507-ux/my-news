@@ -1,32 +1,69 @@
 import streamlit as st
-from fetch_news import get_news
 
 st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
 
-st.title("🦋 PrettyBusy 自动情报站")
+st.title("🦋 PrettyBusy 官方情报站")
 st.write("不必翻墙，同步感受地狱的魅力！")
 
-# 添加一个刷新按钮
-if st.button('🚀 尝试同步最新海外情报'):
-    with st.spinner('正在穿越时空搬运中...'):
-        info = get_news()
-        
-        if not info:
-            st.warning("⚠️ 哎呀，搬运梯子暂时断了（RSSHub 拥堵），请几分钟后再试，或者联系站长人工更新。")
-        else:
-            for post in info:
-                st.markdown(f"### 📅 发布时间：{post.published}")
-                
-                # --- 核心黑科技：图片代理 ---
-                # 这行代码会把推特图片链接换成国内能开的加速链接
-                content = post.description.replace(
-                    'https://pbs.twimg.com', 
-                    'https://i.weserv.nl/?url=https://pbs.twimg.com'
-                )
-                
-                # 显示抓取到的内容（文字+图片）
-                st.markdown(content, unsafe_allow_html=True)
-                st.write(f"[查看原文]({post.link})")
-                st.divider()
+# ====================================================
+# 【第一条：最新消息】 永远把最新的放在最上面
+# ====================================================
+st.divider() # 第一条上方的分割线
+st.subheader("📅 [4月16日] 贝尔菲格(攻击者) 动态立绘")
+# 记得把下面括号里的链接换成你在 GitHub 上传后的图片地址
+st.image("这里贴第一张图的链接", caption="贝尔菲格立绘")
+st.write("""
+这里写第一条的内容：
+比如：这就是我们最新的L级角色贝尔菲格！他的攻击动作非常华丽，大家快来看看！
+""")
 
-st.info("💡 提示：如果自动更新失败，说明推特官方封锁较严，请稍后再试。")
+
+# ====================================================
+# 【第二条：往期消息】 旧消息往下面排
+# ====================================================
+st.divider() # 第二条上方的分割线，用来隔开上面的消息
+st.subheader("📅 [4月16日] 版本更新公告")
+# 记得把下面括号里的链接换成你在 GitHub 上传后的第二张图片地址
+st.image("这里贴第二张图的链接", caption="更新详情图")
+st.write("""
+这里写第二条的内容：
+比如：本次更新除了新角色，还修复了一些已知的问题，大家记得去应用商店更新哦！
+""")
+
+# ====================================================
+
+st.info("💡 站长提示：本站内容由站长爆肝搬运，感谢支持！")
+
+st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
+
+st.title("🦋 PrettyBusy 官方情报站")
+st.write("不必翻墙，搬运自X：@Preetybusy_KR！")
+
+# ====================================================
+# 【第一条：最新消息】 永远把最新的放在最上面
+# ====================================================
+st.divider() # 第一条上方的分割线
+st.subheader("📅 [4月16日] 贝尔菲格(攻击者) 动态立绘")
+# 记得把下面括号里的链接换成你在 GitHub 上传后的图片地址
+st.image("https://wx2.sinaimg.cn/mw2000/009c1GDEly1icba74auw2j30ek0d374x.jpg", caption="贝尔菲格立绘")
+st.write("""
+这里写第一条的内容：
+试验1
+""")
+
+
+# ====================================================
+# 【第二条：往期消息】 旧消息往下面排
+# ====================================================
+st.divider() # 第二条上方的分割线，用来隔开上面的消息
+st.subheader("📅 [4月16日] 版本更新公告")
+# 记得把下面括号里的链接换成你在 GitHub 上传后的第二张图片地址
+st.image("https://wx2.sinaimg.cn/mw2000/009c1GDEly1icba74auw2j30ek0d374x.jpg", caption="更新详情图")
+st.write("""
+这里写第二条的内容：
+试验2
+""")
+
+# ====================================================
+
+st.info("💡 站长提示：本站内容由站长爆肝搬运，感谢支持！")
