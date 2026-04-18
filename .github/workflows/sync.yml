@@ -1,0 +1,12 @@
+name: 自动刷新情报
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小时运行一次
+  workflow_dispatch:      # 允许你手动点击运行
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 唤醒网页
+        run: curl -I https://你的网站名字.streamlit.app # 这一步是让你的网站保持清醒
