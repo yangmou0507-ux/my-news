@@ -1,18 +1,26 @@
 import streamlit as st
-from fetch_news import get_news
+
+st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
 
 st.title("🦋 PrettyBusy 搬运站")
 st.write("大家不用翻墙也能看消息啦！")
 
-if st.button('点我刷新情报'):
-    with st.spinner('正在同步海外情报...'):
-        info = get_news()
-        if not info:
-            st.warning("⚠️ 搬运梯子暂时断了，请过几分钟再点一次。")
-        else:
-            for post in info:
-                st.markdown(f"### 📅 时间：{post.published}")
-                # 魔法代理：让图片在国内正常显示
-                content = post.description.replace('https://pbs.twimg.com', 'https://i.weserv.nl/?url=https://pbs.twimg.com')
-                st.markdown(content, unsafe_allow_html=True)
-                st.divider()
+st.divider()
+
+# --- 这里就是你发朋友圈的地方 ---
+# 每一条情报你可以复制下面的格式
+
+st.subheader("📅 最新情报：2024年4月18日")
+st.image("这里贴图片的链接", caption="图片说明")
+st.write("""
+这里写你想对群友说的话，或者翻译好的推特内容。
+比如：官方更新了新的角色立绘！大家快看！
+""")
+
+st.divider()
+
+st.subheader("📅 往期回顾：2024年4月15日")
+st.write("之前更新的消息内容...")
+# ------------------------------
+
+st.info("💡 站长提示：由于海外官网抓取不稳定，目前改为人工搬运，感谢大家支持！"
