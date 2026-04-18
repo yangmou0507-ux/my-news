@@ -1,30 +1,32 @@
 import streamlit as st
+from fetch_news import get_news
 
 st.set_page_config(page_title="PrettyBusy 情报站", page_icon="🦋")
 
-st.title("🦋 PrettyBusy 搬运站")
-st.write("大家不用翻墙也能看消息啦！")
+st.title("🦋 PrettyBusy 自动情报站")
+st.write("不必翻墙，同步感受地狱的魅力！")
 
-st.divider()
+# 添加一个刷新按钮
+if st.button('🚀 尝试同步最新海外情报'):
+    with st.spinner('正在穿越时空搬运中...'):
+        info = get_news()
+        
+        if not info:
+            st.warning("⚠️ 哎呀，搬运梯子暂时断了（RSSHub 拥堵），请几分钟后再试，或者联系站长人工更新。")
+        else:
+            for post in info:
+                st.markdown(f"### 📅 发布时间：{post.published}")
+                
+                # --- 核心黑科技：图片代理 ---
+                # 这行代码会把推特图片链接换成国内能开的加速链接
+                content = post.description.replace(
+                    'https://pbs.twimg.com', 
+                    'https://i.weserv.nl/?url=https://pbs.twimg.com'
+                )
+                
+                # 显示抓取到的内容（文字+图片）
+                st.markdown(content, unsafe_allow_html=True)
+                st.write(f"[查看原文]({post.link})")
+                st.divider()
 
-# --- 这里就是你发朋友圈的地方 ---
-# 每一条情报你可以复制下面的格式
-
-st.subheader("📅 最新情报：2024年4月18日")
-st.image("这里贴图片的链接", caption="图片说明")
-st.write("""
-这里写你想对群友说的话，或者翻译好的推特内容。
-比如：官方更新了新的角色立绘！大家快看！
-""")
-
-st.divider()
-
-st.subheader("📅 往期回顾：2024年4月15日")
-st.write("之前更新的消息内容...")
-# ------------------------------
-
-st.info("💡 站长提示：由于海外官网抓取不稳定，目前改为人工搬运，感谢大家支持！"
-st.subheader("📅 情报更新：这里改日期")
-st.write("这里写你翻译好的推特内容，或者你想对群友说的话。")
-st.image("这里放图片的链接", caption="照片描述")
-st.divider() # 这是一个分割线，让两条情报分开
+st.info("💡 提示：如果自动更新失败，说明推特官方封锁较严，请稍后再试。")
